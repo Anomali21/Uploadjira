@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Portal of the new renewable energy in Valais";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div style="height:400px;">
+        <canvas id="energyChartCanvas"></canvas>
+    </div>
+    <div class="mt-4 text-end">
+        <a asp-controller="NewRenewablesEnergys" asp-action="Index" target="_blank" rel="noopener" class="btn btn-primary">NER detail</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        import { renderValaisTotalProduction } from '/js/valaisEnergyChart.js';
+        renderValaisTotalProduction('energyChartCanvas', 'https://localhost:7001/api/energy/valais');
+    </script>
+}

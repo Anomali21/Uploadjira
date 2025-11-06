@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container mt-4">
+    <h1 class="display-4">Portal of the new renewable energy in Valais</h1>
+    <hr />
+    
+    <div class="mt-4" style="height:400px;">
+        <canvas id="energyChartCanvas"></canvas>
+    </div>
+
+    <div class="mt-4 text-end">
+        <a href="/new-renewables-energys" class="btn btn-primary">NER detail</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        import { renderBarChart } from '/js/components/energyChartComponent.js';
+        const apiUrl = 'https://localhost:5001/api/energy/valais';
+        renderBarChart({
+          canvasId: 'energyChartCanvas',
+          apiUrl,
+          label: 'Production (GWh) - Valais'
+        });
+    </script>
+}

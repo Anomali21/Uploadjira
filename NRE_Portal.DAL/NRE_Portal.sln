@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Portal.DAL", "NRE_Portal.DAL\NRE_Portal.DAL.csproj", "{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Portal.DAL.Tests", "NRE_Portal.DAL.Tests\NRE_Portal.DAL.Tests.csproj", "{805D8D66-FACD-4039-9EFA-D06DC180163A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2} = {3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Protal.WebAPI", "NRE_Protal.WebAPI\NRE_Protal.WebAPI.csproj", "{28D32546-4CDC-408A-8904-34100EEAB891}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2} = {3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Portal.WebAPI.Tests", "NRE_Portal.WebAPI.Tests\NRE_Portal.WebAPI.Tests.csproj", "{6641FCF4-9A05-4015-95FD-F42232E3C625}"
+	ProjectSection(ProjectDependencies) = postProject
+		{28D32546-4CDC-408A-8904-34100EEAB891} = {28D32546-4CDC-408A-8904-34100EEAB891}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Portal.WebApp", "NRE_Portal.WebApp\NRE_Portal.WebApp.csproj", "{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2} = {3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{805D8D66-FACD-4039-9EFA-D06DC180163A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{805D8D66-FACD-4039-9EFA-D06DC180163A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{805D8D66-FACD-4039-9EFA-D06DC180163A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{805D8D66-FACD-4039-9EFA-D06DC180163A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D32546-4CDC-408A-8904-34100EEAB891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D32546-4CDC-408A-8904-34100EEAB891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D32546-4CDC-408A-8904-34100EEAB891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D32546-4CDC-408A-8904-34100EEAB891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6641FCF4-9A05-4015-95FD-F42232E3C625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6641FCF4-9A05-4015-95FD-F42232E3C625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6641FCF4-9A05-4015-95FD-F42232E3C625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6641FCF4-9A05-4015-95FD-F42232E3C625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {384B2858-0F85-4C73-BAB9-1A023A20531C}
+	EndGlobalSection
+EndGlobal

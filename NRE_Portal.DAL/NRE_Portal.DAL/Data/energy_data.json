@@ -1,0 +1,147 @@
+{
+  "Production d'El": [
+    {
+      "year": 2010,
+      "hydro": 10172.285,
+      "hydroSmall": 429.123,
+      "therma": 701.2234,
+      "thermaRen": 64.952,
+      "biogaz": 3.745,
+      "PV": 0.558,
+      "Windturbine": 10.236,
+      "All": 10888.047400000003
+    },
+    {
+      "year": 2011,
+      "hydro": 8781.35,
+      "hydroSmall": 401.42,
+      "therma": 687.1243000000001,
+      "thermaRen": 54.592,
+      "biogaz": 3.3496,
+      "PV": 1.346,
+      "Windturbine": 9.259,
+      "All": 9482.428899999999
+    },
+    {
+      "year": 2012,
+      "hydro": 10384.106,
+      "hydroSmall": 450.599,
+      "therma": 757.7809,
+      "thermaRen": 90.241,
+      "biogaz": 4.039,
+      "PV": 5.695,
+      "Windturbine": 13.854,
+      "All": 11165.4749
+    },
+    {
+      "year": 2013,
+      "hydro": 10375.498,
+      "hydroSmall": 435,
+      "therma": 535.8087,
+      "thermaRen": 79.837,
+      "biogaz": 4.093,
+      "PV": 20.985,
+      "Windturbine": 18.831,
+      "All": 10955.2157
+    },
+    {
+      "year": 2014,
+      "hydro": 9552.854,
+      "hydroSmall": 492,
+      "therma": 395.68661799999995,
+      "thermaRen": 90.691,
+      "biogaz": 4.4435,
+      "PV": 39.152,
+      "Windturbine": 18.315,
+      "All": 10010.451117999999
+    },
+    {
+      "year": 2015,
+      "hydro": 11132.716,
+      "hydroSmall": 495.61,
+      "therma": 299.4328296,
+      "thermaRen": 76.08,
+      "biogaz": 5.111,
+      "PV": 55.571,
+      "Windturbine": 18.083,
+      "All": 11510.913829600002
+    },
+    {
+      "year": 2016,
+      "hydro": 9643.969,
+      "hydroSmall": 512,
+      "therma": 453.8794328,
+      "thermaRen": 87.237,
+      "biogaz": 5.564,
+      "PV": 66.248,
+      "Windturbine": 18.338,
+      "All": 10187.9984328
+    },
+    {
+      "year": 2017,
+      "hydro": 9759.404,
+      "hydroSmall": 474,
+      "therma": 442.83934739999995,
+      "thermaRen": 85.474,
+      "biogaz": 5.656,
+      "PV": 74.511,
+      "Windturbine": 24.437,
+      "All": 10306.847347400002
+    },
+    {
+      "year": 2018,
+      "hydro": 10849.236,
+      "hydroSmall": 560,
+      "therma": 383.21599999999995,
+      "thermaRen": 77.319,
+      "biogaz": 4.722,
+      "PV": 81.985,
+      "Windturbine": 21.924,
+      "All": 11341.083000000002
+    },
+    {
+      "year": 2019,
+      "hydro": 10750.787,
+      "hydroSmall": 578,
+      "therma": 389.106527,
+      "thermaRen": 89.637,
+      "biogaz": 4.774,
+      "PV": 90.787,
+      "Windturbine": 23.289,
+      "All": 11258.743527
+    },
+    {
+      "year": 2020,
+      "hydro": 11186.505,
+      "hydroSmall": 669,
+      "therma": 338.513873,
+      "thermaRen": 92.375,
+      "biogaz": 5.316,
+      "PV": 101.404,
+      "Windturbine": 22.293,
+      "All": 11654.031873
+    },
+    {
+      "year": 2021,
+      "hydro": 10084.031,
+      "hydroSmall": 632,
+      "therma": 174.5126899999996,
+      "thermaRen": 68.381,
+      "biogaz": 5.267,
+      "PV": 108.173,
+      "Windturbine": 21.347,
+      "All": 10393.33069
+    },
+    {
+      "year": 2022,
+      "hydro": 9311.357,
+      "hydroSmall": 546.858,
+      "therma": 174.931,
+      "thermaRen": 70.617,
+      "biogaz": 5.32,
+      "PV": 143.34,
+      "Windturbine": 22.41,
+      "All": 9657.358
+    }
+  ]
+}
