@@ -1,0 +1,149 @@
+@{
+    ViewData["Title"] = "Entering my private installation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Private installation</li>
+        </ol>
+    </nav>
+    <hr />
+
+    <div class="row mt-4">
+        <!-- Left Sidebar Navigation -->
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active" data-section="location">
+                    Location
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" data-section="type">
+                    Type of installation
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" data-section="orientation">
+                    Orientation
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" data-section="area">
+                    Area
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body" id="dynamic-content">
+                    <!-- Location component shown by default -->
+                    <partial name="Components/_LocationComponent" />
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <!-- Previous Button (Left Arrow) -->
+                <button id="prev-btn" class="btn btn-dark btn-lg rounded-circle" style="width: 80px; height: 80px; display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                </button>
+
+                <!-- Spacer for alignment when prev button is hidden -->
+                <div style="width: 80px;"></div>
+
+                <!-- Next Button (Right Arrow) -->
+                <button id="next-btn" class="btn btn-dark btn-lg rounded-circle" style="width: 80px; height: 80px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = ['location', 'type', 'orientation', 'area'];
+            let currentIndex = 0;
+
+            const navLinks = document.querySelectorAll('.list-group-item');
+            const contentArea = document.getElementById('dynamic-content');
+            const prevBtn = document.getElementById('prev-btn');    
+            const nextBtn = document.getElementById('next-btn');
+
+            // Update button visibility
+            function updateButtons() {
+                // Hide/show previous button
+                if (currentIndex === 0) {
+                    prevBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'block';
+                }
+
+                // Hide/show next button
+                if (currentIndex === sections.length - 1) {
+                    nextBtn.style.display = 'none';
+                } else {
+                    nextBtn.style.display = 'block';
+                }
+            }
+
+            // Load component
+            function loadComponent(section) {
+                fetch(`/PrivateInstallation/GetComponent?section=${section}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        contentArea.innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Error loading component:', error);
+                        contentArea.innerHTML = '<p class="text-danger">Error loading content</p>';
+                    });
+            }
+
+            // Update active navigation
+            function updateNavigation(index) {
+                navLinks.forEach((link, i) => {
+                    link.classList.toggle('active', i === index);
+                });
+            }
+
+            // Navigate to section
+            function navigateToSection(index) {
+                if (index >= 0 && index < sections.length) {
+                    currentIndex = index;
+                    const section = sections[currentIndex];
+                    loadComponent(section);
+                    updateNavigation(currentIndex);
+                    updateButtons();
+                }
+            }
+
+            // Click on sidebar navigation
+            navLinks.forEach((link, index) => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navigateToSection(index);
+                });
+            });
+
+            // Previous button
+            prevBtn.addEventListener('click', function() {
+                navigateToSection(currentIndex - 1);
+            });
+
+            // Next button
+            nextBtn.addEventListener('click', function() {
+                navigateToSection(currentIndex + 1);
+            });
+
+            // Initialize
+            updateButtons();
+        });
+    </script>
+}

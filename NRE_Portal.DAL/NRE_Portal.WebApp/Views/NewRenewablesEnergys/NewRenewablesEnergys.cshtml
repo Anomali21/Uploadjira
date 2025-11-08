@@ -5,7 +5,22 @@
 
 <div class="container mt-4">
     <h2>@ViewData["Title"]</h2>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">NER</li>
+        </ol>
+    </nav>
     <hr />
+
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-controller="PrivateInstallation" asp-action="Index" class="btn btn-success btn-lg">
+            + Add my installation
+        </a>
+    </div>
+
+  
     <div class="mt-4">
         <!-- page content-->
     </div>
