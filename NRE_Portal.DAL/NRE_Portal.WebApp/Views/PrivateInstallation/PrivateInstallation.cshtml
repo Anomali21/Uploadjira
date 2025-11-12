@@ -150,6 +150,74 @@
                 }
             }
 
+            // Initialize validation for orientation component
+            function initializeOrientationValidation() {
+                const azimuthInput = document.getElementById('azimuth');
+                const roofSlopeInput = document.getElementById('roofSlope');
+                const azimuthError = document.getElementById('azimuth-error');
+                const roofSlopeError = document.getElementById('roofSlope-error');
+
+                if (!azimuthInput || !roofSlopeInput || !azimuthError || !roofSlopeError) {
+                    return;
+                }
+
+                function validateNumericInput(input, errorElement, min, max) {
+                    const value = input.value.trim();
+                    
+                    errorElement.textContent = '';
+                    errorElement.style.display = 'none';
+                    input.classList.remove('is-invalid');
+                    input.classList.remove('is-valid');
+                    
+                    if (value === '') {
+                        return true;
+                    }
+
+                    const numValue = parseFloat(value);
+                    
+                    if (isNaN(numValue) || !/^-?\d+(\.\d+)?$/.test(value)) {
+                        errorElement.textContent = 'Please enter only numbers';
+                        errorElement.style.display = 'block';
+                        input.classList.add('is-invalid');
+                        return false;
+                    }
+
+                    if (numValue < min || numValue > max) {
+                        errorElement.textContent = `Value must be between ${min} and ${max}`;
+                        errorElement.style.display = 'block';
+                        input.classList.add('is-invalid');
+                        return false;
+                    }
+
+                    input.classList.add('is-valid');
+                    return true;
+                }
+
+                azimuthInput.addEventListener('input', function() {
+                    validateNumericInput(azimuthInput, azimuthError, 0, 360);
+                });
+
+                azimuthInput.addEventListener('blur', function() {
+                    validateNumericInput(azimuthInput, azimuthError, 0, 360);
+                });
+
+                roofSlopeInput.addEventListener('input', function() {
+                    validateNumericInput(roofSlopeInput, roofSlopeError, 0, 90);
+                });
+
+                roofSlopeInput.addEventListener('blur', function() {
+                    validateNumericInput(roofSlopeInput, roofSlopeError, 0, 90);
+                });
+
+                // Validate immediately if values exist
+                if (azimuthInput.value) {
+                    validateNumericInput(azimuthInput, azimuthError, 0, 360);
+                }
+                if (roofSlopeInput.value) {
+                    validateNumericInput(roofSlopeInput, roofSlopeError, 0, 90);
+                }
+            }
+
             // Load component 
             function loadComponent(section) {
                 fetch(`/PrivateInstallation/GetComponent?section=${section}`)
@@ -158,7 +226,14 @@
                         contentArea.innerHTML = html;
                         
                         // Restore state after loading with a delay
-                        setTimeout(() => loadSavedState(section), 100);
+                        setTimeout(() => {
+                            loadSavedState(section);
+                            
+                            // Initialize validation for orientation section
+                            if (section === 'orientation') {
+                                initializeOrientationValidation();
+                            }
+                        }, 100);
                         
                         // Attach save event listeners
                         attachSaveListeners(section);

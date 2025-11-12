@@ -1,4 +1,28 @@
-<div id="orientation-content">
-    <h4>Orientation Section</h4>
-    <p>This is the Orientation component content. Form fields will be added here later.</p>
+<div class="orientation-component">
+    <h4>Installation Orientation</h4>
+    <p class="text-muted">Please enter the orientation details of your installation.</p>
+
+    <form id="orientation-form">
+        <div class="mb-3">
+            <label for="azimuth" class="form-label">Field orientation (azimuth) [°]:</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="azimuth" 
+                name="azimuth" 
+                placeholder="Enter azimuth value" />
+            <span class="text-danger" id="azimuth-error"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="roofSlope" class="form-label">Slope of the roof [°]:</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="roofSlope" 
+                name="roofSlope" 
+                placeholder="Enter roof slope value" />
+            <span class="text-danger" id="roofSlope-error"></span>
+        </div>
+    </form>
 </div>
