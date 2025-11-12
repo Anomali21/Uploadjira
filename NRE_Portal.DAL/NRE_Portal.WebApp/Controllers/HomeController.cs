@@ -1,13 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using NRE_Portal.WebApp.Models;
-using System.Diagnostics;
+using System.Threading.Tasks;
 
 
 namespace NRE_Portal.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }

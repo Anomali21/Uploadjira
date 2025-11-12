@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Portal.WebApp", "NRE_Po
 		{3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2} = {3AC5C8A8-73D9-4A97-A6EF-7BE27764ACB2}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NRE_Portal.WebApp.Tests", "NRE_Portal.WebApp.Tests\NRE_Portal.WebApp.Tests.csproj", "{EBA3F47D-AF13-4F69-9069-60AB43848D31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F18C3D3E-442F-426C-BBD4-4E36A5247B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBA3F47D-AF13-4F69-9069-60AB43848D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBA3F47D-AF13-4F69-9069-60AB43848D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBA3F47D-AF13-4F69-9069-60AB43848D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBA3F47D-AF13-4F69-9069-60AB43848D31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

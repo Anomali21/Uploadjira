@@ -76,16 +76,73 @@
             const prevBtn = document.getElementById('prev-btn');    
             const nextBtn = document.getElementById('next-btn');
 
+            // Load saved state from sessionStorage
+            function loadSavedState(section) {
+                const savedData = sessionStorage.getItem(`section-${section}`);
+                if (savedData) {
+                    try {
+                        const data = JSON.parse(savedData);
+                        // Restore selections
+                        Object.keys(data).forEach(key => {
+                            // For checkboxes and radios, search by name AND value
+                            if (data[key].type === 'checkbox' || data[key].type === 'radio') {
+                                const element = document.querySelector(`input[name="${key}"][value="${data[key].value}"]`);
+                                if (element) {
+                                    element.checked = true;
+                                }
+                            } else {
+                                // For other inputs (text, select, etc.)
+                                const element = document.querySelector(`[name="${key}"]`);
+                                if (element) {
+                                    element.value = data[key].value;
+                                }
+                            }
+                        });
+                    } catch (e) {
+                        console.error('Error restoring state:', e);
+                    }
+                }
+            }
+
+            // Save current state to sessionStorage
+            function saveCurrentState(section) {
+                const formData = {};
+                const form = contentArea.querySelector('form') || contentArea;
+                const inputs = form.querySelectorAll('input, select, textarea');
+                
+                inputs.forEach(input => {
+                    if (input.name) {
+                        if (input.type === 'checkbox' || input.type === 'radio') {
+                            // Save only if checked
+                            if (input.checked) {
+                                formData[input.name] = {
+                                    type: input.type,
+                                    value: input.value
+                                };
+                            }
+                        } else {
+                            // For other input types
+                            if (input.value) {
+                                formData[input.name] = {
+                                    type: input.type,
+                                    value: input.value
+                                };
+                            }
+                        }
+                    }
+                });
+                
+                sessionStorage.setItem(`section-${section}`, JSON.stringify(formData));
+            }
+
             // Update button visibility
             function updateButtons() {
-                // Hide/show previous button
                 if (currentIndex === 0) {
                     prevBtn.style.display = 'none';
                 } else {
                     prevBtn.style.display = 'block';
                 }
 
-                // Hide/show next button
                 if (currentIndex === sections.length - 1) {
                     nextBtn.style.display = 'none';
                 } else {
@@ -93,12 +150,18 @@
                 }
             }
 
-            // Load component
+            // Load component 
             function loadComponent(section) {
                 fetch(`/PrivateInstallation/GetComponent?section=${section}`)
                     .then(response => response.text())
                     .then(html => {
                         contentArea.innerHTML = html;
+                        
+                        // Restore state after loading with a delay
+                        setTimeout(() => loadSavedState(section), 100);
+                        
+                        // Attach save event listeners
+                        attachSaveListeners(section);
                     })
                     .catch(error => {
                         console.error('Error loading component:', error);
@@ -106,16 +169,30 @@
                     });
             }
 
-            // Update active navigation
+            // Attach save event listeners to inputs
+            function attachSaveListeners(section) {
+                const form = contentArea.querySelector('form') || contentArea;
+                const inputs = form.querySelectorAll('input, select, textarea');
+                
+                inputs.forEach(input => {
+                    input.addEventListener('change', () => saveCurrentState(section));
+                    input.addEventListener('input', () => saveCurrentState(section));
+                });
+            }
+
+            // Update active navigation item
             function updateNavigation(index) {
                 navLinks.forEach((link, i) => {
                     link.classList.toggle('active', i === index);
                 });
             }
 
-            // Navigate to section
+            // Navigate to a specific section
             function navigateToSection(index) {
                 if (index >= 0 && index < sections.length) {
+                    // Save current state before leaving
+                    saveCurrentState(sections[currentIndex]);
+                    
                     currentIndex = index;
                     const section = sections[currentIndex];
                     loadComponent(section);
@@ -124,7 +201,7 @@
                 }
             }
 
-            // Click on sidebar navigation
+            // Handle sidebar navigation clicks
             navLinks.forEach((link, index) => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -132,18 +209,19 @@
                 });
             });
 
-            // Previous button
+            // Handle previous button click
             prevBtn.addEventListener('click', function() {
                 navigateToSection(currentIndex - 1);
             });
 
-            // Next button
+            // Handle next button click
             nextBtn.addEventListener('click', function() {
                 navigateToSection(currentIndex + 1);
             });
 
-            // Initialize
+            // Initialize on page load
             updateButtons();
+            attachSaveListeners(sections[0]);
         });
     </script>
 }

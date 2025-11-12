@@ -1,4 +1,95 @@
-<div id="type-content">
-    <h4>Type of Installation Section</h4>
-    <p>This is the Type of Installation component content. Form fields will be added here later.</p>
+@{
+    ViewData["Title"] = "Type of Installation";
+}
+
+<div class="type-component">
+    <h3>Renewable energy:</h3>
+    
+    <div class="renewable-energy-options">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="aeolian" name="renewableEnergy" value="Aeolian">
+            <label class="form-check-label" for="aeolian">
+                Aeolian
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="photovoltaic" name="renewableEnergy" value="Photovoltaic">
+            <label class="form-check-label" for="photovoltaic">
+                Photovoltaic
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="bioGas" name="renewableEnergy" value="Bio-gas">
+            <label class="form-check-label" for="bioGas">
+                Bio-gas
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="miniHydraulic" name="renewableEnergy" value="Mini-hydraulic">
+            <label class="form-check-label" for="miniHydraulic">
+                Mini-hydraulic
+            </label>
+        </div>
+    </div>
+
+    <h3 class="mt-4">Type of integration:</h3>
+    
+    <div class="integration-options">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="added" name="integration" value="Added">
+            <label class="form-check-label" for="added">
+                Added
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="integrated" name="integration" value="Integrated">
+            <label class="form-check-label" for="integrated">
+                Integrated
+            </label>
+        </div>
+    </div>
+
+    <h3 class="mt-4">Type of PV cells:</h3>
+    
+    <div class="pv-cells-options">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="polycrystalline" name="pvCells" value="Polycrystalline">
+            <label class="form-check-label" for="polycrystalline">
+                Polycrystalline
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="monocrystalline" name="pvCells" value="Monocrystalline">
+            <label class="form-check-label" for="monocrystalline">
+                Monocrystalline
+            </label>
+        </div>
+    </div>
 </div>
+
+<style>
+    .type-component {
+        padding: 20px;
+    }
+    
+    .type-component h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    
+    .form-check {
+        margin-bottom: 10px;
+    }
+    
+    .renewable-energy-options,
+    .integration-options,
+    .pv-cells-options {
+        margin-bottom: 20px;
+    }
+</style>
