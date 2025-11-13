@@ -22,5 +22,15 @@ namespace NRE_Portal.WebApp.Controllers
                 _ => NotFound()
             };
         }
+
+        [HttpPost]
+        public IActionResult SaveData(string InstallationName, string Location, int Length, int Width, int Height)
+        {
+
+            Console.WriteLine($"nom de l'installatiion : {InstallationName}, location : {Location}, dimension : {Length}x{Width}x{Height}");
+
+            return RedirectToAction("SaveScreen");
+        }
+
     }
 }

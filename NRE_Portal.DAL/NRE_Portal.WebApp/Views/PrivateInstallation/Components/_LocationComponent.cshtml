@@ -2,3 +2,26 @@
     <h4>Location Section</h4>
     <p>This is the Location component content. Form fields will be added here later.</p>
 </div>
+
+
+<form asp-action="PrivateInstallationController" method="post">
+    <h2>Save a new installation</h2>
+    <div>
+        <label for="instalationname">Instalation name :</label>
+        <input type="text" id="instalationname" name="Instalation Name" />
+    </div>
+
+    <div>
+        <label for="location">Location :</label>
+        <input type="text" id="location" name="Location" />
+    </div>
+
+    <div>
+        <label for="dimention">Dimention :</label>
+        <input type="int" id="lenght" name="Length" />
+        <input type="int" id="width" name="Width" />
+        <input type="int" id="hight" name="Hight" />
+    </div>
+
+    <button type="submit">Enregistrer</button>
+</form>
