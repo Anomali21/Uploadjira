@@ -11,7 +11,9 @@ namespace NRE_Portal.DAL.Models
         public int Year { get; set; }
         public double Production { get; set; } // en GWh
 
-        //Le commentaire trop cool
+        //Le commentaire trop cool OF DOOM et trop cool
+        //yay
+
         public string Source { get; set; } = string.Empty; // solaire, hydro, etc.
     }
 }
